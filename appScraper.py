@@ -12,8 +12,8 @@ dateFormatted = "{:%Y-%m-%d}".format(timestamp)
 
 # Scrape Android Data
 data = []
-# Retrieve list of Android URLs 
-androidURLs = [appURLs[apps]['android'] for apps in appURLs]
+# Retrieve list of Android URLs
+androidURLs = [appURLs[apps]["android"] for apps in appURLs]
 # Loop through all Android URLs
 for url in androidURLs:
     result = requests.get(url)
@@ -42,44 +42,46 @@ for url in androidURLs:
     for rating in phoneRatings:
         phoneStarRating = rating.find(class_="Qjdn7d").get_text()
         reviews_label = rating["aria-label"]
-        reviews_count = reviews_label.split(' ')[0].replace(',', '')
-        
-        if phoneStarRating == '1':
+        reviews_count = reviews_label.split(" ")[0].replace(",", "")
+
+        if phoneStarRating == "1":
             star1Count = reviews_count
-        elif phoneStarRating == '2':
+        elif phoneStarRating == "2":
             star2Count = reviews_count
-        elif phoneStarRating == '3':
+        elif phoneStarRating == "3":
             star3Count = reviews_count
-        elif phoneStarRating == '4':
+        elif phoneStarRating == "4":
             star4Count = reviews_count
-        elif phoneStarRating == '5':
+        elif phoneStarRating == "5":
             star5Count = reviews_count
     # App Category
     appCategory = dataJSON["applicationCategory"]
-    
+
     # Append scraped data for each app
-    data.append({
-        'Date': dateFormatted,
-        'App Name': appName,
-        'Android App Rating': starRatingOfficial,
-        'Android Total Reviews': totalReviews,
-        'Android Detailed App Rating': starRatingDetail,
-        '1 Star Reviews (Phone)': star1Count,
-        '2 Star Reviews (Phone)': star2Count,
-        '3 Star Reviews (Phone)': star3Count,
-        '4 Star Reviews (Phone)': star4Count,
-        '5 Star Reviews (Phone)': star5Count,
-        'Android App Category': appCategory,
-        'Timestamp': timestamp
-    })
+    data.append(
+        {
+            "Date": dateFormatted,
+            "App Name": appName,
+            "Android App Rating": starRatingOfficial,
+            "Android Total Reviews": totalReviews,
+            "Android Detailed App Rating": starRatingDetail,
+            "1 Star Reviews (Phone)": star1Count,
+            "2 Star Reviews (Phone)": star2Count,
+            "3 Star Reviews (Phone)": star3Count,
+            "4 Star Reviews (Phone)": star4Count,
+            "5 Star Reviews (Phone)": star5Count,
+            "Android App Category": appCategory,
+            "Timestamp": timestamp,
+        }
+    )
 
 # Convert to Dataframe
 dataAndroid = pd.DataFrame(data)
 
 # Scrape Android Data
 data = []
-# Retrieve list of Android URLs 
-iosURLS = [appURLs[apps]['ios'] for apps in appURLs]
+# Retrieve list of Android URLs
+iosURLS = [appURLs[apps]["ios"] for apps in appURLs]
 # Loop through all Android URLs
 for url in iosURLS:
     result = requests.get(url)
@@ -109,33 +111,59 @@ for url in iosURLS:
     # App Category
     appCategory = dataJSON["applicationCategory"]
     # Append scraped data for each app
-    data.append({
-        'Date': dateFormatted,
-        'App Name': appName,
-        'iOS App Rating': starRatingOfficial,
-        'iOS Total Reviews': totalReviews,
-        'iOS App Rank': rank,
-        'iOS App Category': appCategory,
-        'Timestamp': timestamp
-    })
+    data.append(
+        {
+            "Date": dateFormatted,
+            "App Name": appName,
+            "iOS App Rating": starRatingOfficial,
+            "iOS Total Reviews": totalReviews,
+            "iOS App Rank": rank,
+            "iOS App Category": appCategory,
+            "Timestamp": timestamp,
+        }
+    )
 
 # Convert to Dataframe
 dataIos = pd.DataFrame(data)
 
+dataIosTemp = dataIos.copy()
+dataIosTemp["App Name"] = dataAndroid["App Name"]
 
-# Create a new column in each DataFrame for the matching URL
-dataAndroid['MatchingURL'] = dataAndroid['App Name'].apply(lambda x: appURLs.get(x, {}).get('android'))
-dataIos['MatchingURL'] = dataIos['App Name'].apply(lambda x: appURLs.get(x, {}).get('ios'))
 
-# Merge the Android and iOS DataFrames based on the matching URLs
-combinedData = pd.merge(dataAndroid, dataIos, left_on="MatchingURL", right_on="MatchingURL", how="outer")
+# Merge the Android and iOS DataFrames based on fuzzy matching of app names
+combinedData = pd.merge(
+    dataAndroid, dataIosTemp, left_on="App Name", right_on="App Name", how="outer"
+)
 
-# Drop the unnecessary columns
-combinedData = combinedData.drop(['MatchingURL', 'App Name_y', 'Timestamp_y', 'Date_y', 'Detailed App Rating','1 Star Reviews (Phone)','2 Star Reviews (Phone)','3 Star Reviews (Phone)','4 Star Reviews (Phone)','5 Star Reviews (Phone)'], axis=1)
+# Drop unnecessary columns
+combinedData = combinedData.drop(
+    [
+        "Timestamp_x",
+        "Date_y",
+        "Android Detailed App Rating",
+        "1 Star Reviews (Phone)",
+        "2 Star Reviews (Phone)",
+        "3 Star Reviews (Phone)",
+        "4 Star Reviews (Phone)",
+        "5 Star Reviews (Phone)",
+        "Android App Category",
+        "iOS App Category",
+        "iOS App Rank",
+    ],
+    axis=1,
+)
+
+# Rename the remaining columns
+combinedData = combinedData.rename(
+    columns={"Timestamp_y": "Timestamp", "Date_x": "Date"}
+)
 
 # Calculate the average of iOS and Android app ratings
-combinedData['Overall App Rating'] = (combinedData['iOS App Rating_x'] + combinedData['Android App Rating_y']) / 2
+combinedData['Overall App Rating'] = pd.to_numeric(combinedData['iOS App Rating'], errors='coerce').add(pd.to_numeric(combinedData['Android App Rating'], errors='coerce')) / 2
+
 
 # Display the combined DataFrame
-print(combinedData)
+# print(combinedData)
 
+# Export the combined DataFrame to a CSV file
+combinedData.to_csv("data.csv", index=False)
