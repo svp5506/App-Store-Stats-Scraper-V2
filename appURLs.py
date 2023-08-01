@@ -119,9 +119,9 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.midco.consumerapp&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/midco-my-account/id1090421908"
     },
-    "OptimumSupport": {
+    "MyOptimum": {
         "android": "https://play.google.com/store/apps/details?id=com.optimum.lbsaopt&hl=en_US&gl=US",
-        "ios": "https://apps.apple.com/us/app/optimum-support/id1234273194"
+        "ios": "https://apps.apple.com/us/app/my-optimum/id1644414970"
     },
     "USCellularMyAccount": {
         "android": "https://play.google.com/store/apps/details?id=com.uscc.myaccount&hl=en_US&gl=US",
