@@ -1,29 +1,29 @@
 appURLs = {
-    "GoKinectByWindstream": {
+    "Go Kinect by Windstream": {
         "android": "https://play.google.com/store/apps/details?id=com.windstream.residential&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/go-kinetic-by-windstream/id1342262959"
     },
-    "MyAltaFiber": {
+    "My AltaFiber": {
         "android": "https://play.google.com/store/apps/details?id=com.altafiber.myaltafiber&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-altafiber/id1245014739"
     },
-    "SpectrumAccess": {
+    "Spectrum Access": {
         "android": "https://play.google.com/store/apps/details?id=com.spectrum.access&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/spectrum-access-enabled-media/id1492182876"
     },
-    "CoxApp": {
+    "Cox App": {
         "android": "https://play.google.com/store/apps/details?id=com.cox.android.mobileconnect&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/cox-app/id415894489"
     },
-    "MyVerizon": {
+    "My Verizon App": {
         "android": "https://play.google.com/store/apps/details?id=com.vzw.hss.myverizon&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-verizon/id416023011"
     },
-    "MyCricket": {
+    "myCricket App": {
         "android": "https://play.google.com/store/apps/details?id=com.mizmowireless.acctmgt&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/mycricket-app/id626392754"
     },
-    "MyDishAccount": {
+    "MyDISH Account": {
         "android": "https://play.google.com/store/apps/details?id=com.dish.mydish&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/mydish-account/id1123102087"
     },
@@ -31,23 +31,23 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.tmobile.pr.mytmobile&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/t-mobile/id561625752"
     },
-    "XfinityMobile": {
+    "Xfinity Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.xfinitymobile.myaccount&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/xfinity-mobile/id1194745615"
     },
-    "SpectrumNews": {
+    "Spectrum News": {
         "android": "https://play.google.com/store/apps/details?id=com.twcable.twcnews&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/spectrum-news-local-stories/id740948885"
     },
-    "MySpectrumApp": {
+    "My Spectrum App": {
         "android": "https://play.google.com/store/apps/details?id=com.brighthouse.mybhn&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-spectrum/id942608209"
     },
-    "MySprintMobile": {
+    "My Sprint Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.sprint.care&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-sprint-mobile/id491126018"
     },
-    "VerizonMyFios": {
+    "Verizon MyFios": {
         "android": "https://play.google.com/store/apps/details?id=com.verizon.myfios&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/verizon-my-fios/id476394945"
     },
@@ -55,7 +55,7 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.centurylink.ctl_droid_wrap&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-centurylink/id1015059570"
     },
-    "VisibleMobile": {
+    "Visible Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.visiblemobile.flagship&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/visible-mobile/id1367950045"
     },
@@ -63,7 +63,7 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.charter.university&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/spectrumu/id827887111"
     },
-    "SpectrumTV": {
+    "Spectrum TV App": {
         "android": "https://play.google.com/store/apps/details?id=com.TWCableTV&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/spectrum-tv/id420455839"
     },
@@ -71,11 +71,11 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.att.myWireless&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/myat-t/id309172177"
     },
-    "SpectrumSportsNet": {
+    "Spectrum SportsNet": {
         "android": "https://play.google.com/store/apps/details?id=com.twcsports.android&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/spectrum-sportsnet-live-games/id563316826"
     },
-    "MediacomConnect": {
+    "Mediacom Connect": {
         "android": "https://play.google.com/store/apps/details?id=com.speechcycle.smartcare.android.mediacom&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/mediacomconnect/id527680234"
     },
@@ -87,7 +87,7 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.frontier.selfserve&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/myfrontier/id978439794"
     },
-    "XfinityMyAccount": {
+    "Xfinity MyAccount": {
         "android": "https://play.google.com/store/apps/details?id=com.xfinity.digitalhome&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/xfinity/id1178765645"
     },
@@ -103,27 +103,27 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=agoc.mobile.account&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/armstrong/id636522134"
     },
-    "AstoundMobile": {
+    "Astound Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.astound.mobile.rcn&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/astound-mobile/id6449095899"
     },
-    "HughesNetMobile": {
+    "HughesNet Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.hughesnet.HughesNetMobile&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/hughesnet-mobile/id1097579916"
     },
-    "HTMyAccount": {
+    "HT MyAccount": {
         "android": "https://play.google.com/store/apps/details?id=com.hawaiiantel.myht&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/ht-my-account/id1262963153"
     },
-    "MidcoMyAccount": {
+    "Midco MyAccount": {
         "android": "https://play.google.com/store/apps/details?id=com.midco.consumerapp&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/midco-my-account/id1090421908"
     },
     "MyOptimum": {
-        "android": "https://play.google.com/store/apps/details?id=com.optimum.lbsaopt&hl=en_US&gl=US",
+        "android": "https://play.google.com/store/apps/details?id=com.optimum.cma.prod&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-optimum/id1644414970"
     },
-    "USCellularMyAccount": {
+    "USCellular MyAccount": {
         "android": "https://play.google.com/store/apps/details?id=com.uscc.myaccount&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/uscellular-my-account/id1228669675"
     },
@@ -147,7 +147,7 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.buckeyebroadband.mybuckeye&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/mybuckeye/id1571340716"
     },
-    "MintMobile": {
+    "Mint Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.uvnv.mintsim&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/mint-mobile/id1295303441"
     },

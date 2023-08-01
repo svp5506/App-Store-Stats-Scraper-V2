@@ -13,17 +13,19 @@ dateFormatted = "{:%Y-%m-%d}".format(timestamp)
 data = []
 # Retrieve list of Android URLs
 androidURLs = [appURLs[apps]["android"] for apps in appURLs]
+# Create a reverse mapping from Android URLs to the corresponding app name
+androidURLNameMapping = {appURLs[app]["android"]: app for app in appURLs}
 # Loop through all Android URLs
 for url in androidURLs:
     result = requests.get(url)
     parse = BeautifulSoup(result.content, "lxml")
+    # App Name
+    appName = androidURLNameMapping.get(url)
     # Retrieve and parse JSON
     json_element = parse.find(type="application/ld+json")
     if json_element is not None:
         script = json_element.text.strip()
         dataJSON = json.loads(script)
-        # App Name
-        appName = dataJSON["name"]
         # Star Rating
         aggregateRating = dataJSON.get("aggregateRating")
         if aggregateRating is not None:
@@ -77,7 +79,22 @@ for url in androidURLs:
         )
     else:
         # Handle the case when the JSON element is not found
-        # You may want to log a message or take appropriate action here
+        data.append(
+            {
+                "Date": dateFormatted,
+                "App Name": appName,
+                "Android App Rating": "Not Available",
+                "Android Total Reviews": "Not Available",
+                "Android Detailed App Rating": "Not Available",
+                "1 Star Reviews (Phone)": "Not Available",
+                "2 Star Reviews (Phone)": "Not Available",
+                "3 Star Reviews (Phone)": "Not Available",
+                "4 Star Reviews (Phone)": "Not Available",
+                "5 Star Reviews (Phone)": "Not Available",
+                "Android App Category": "Not Available",
+                "Timestamp": timestamp,
+            }
+        )
         continue
 
 # Convert to Dataframe
@@ -87,17 +104,19 @@ dataAndroid = pd.DataFrame(data)
 data = []
 # Retrieve list of iOS URLs
 iosURLS = [appURLs[apps]["ios"] for apps in appURLs]
+# Create a reverse mapping from iOS URLs to the corresponding app name
+iosURLNameMapping = {appURLs[app]["ios"]: app for app in appURLs}
 # Loop through all iOS URLs
 for url in iosURLS:
     result = requests.get(url)
     parse = BeautifulSoup(result.content, "lxml")
+    # App Name
+    appName = iosURLNameMapping.get(url)
     # Retrieve and parse JSON
     json_element = parse.find(type="application/ld+json")
     if json_element is not None:
         script = json_element.text.strip()
         dataJSON = json.loads(script)
-        # App Name
-        appName = dataJSON["name"]
         # Star Rating
         aggregateRating = dataJSON.get("aggregateRating")
         if aggregateRating is not None:
@@ -131,17 +150,27 @@ for url in iosURLS:
         )
     else:
         # Handle the case when the JSON element is not found
-        # You may want to log a message or take appropriate action here
+        data.append(
+            {
+                "Date": dateFormatted,
+                "App Name": "Not Available",
+                "iOS App Rating": "Not Available",
+                "iOS Total Reviews": "Not Available",
+                "iOS App Rank": "Not Available",
+                "iOS App Category": "Not Available",
+                "Timestamp": timestamp,
+            }
+        )
         continue
 
 # Convert to Dataframe
 dataIos = pd.DataFrame(data)
 
-dataIosTemp = dataIos.copy()
-dataIosTemp["App Name"] = dataAndroid["App Name"]
+dataAndroidTemp = dataAndroid.copy()
+dataAndroidTemp["App Name"] = dataIos["App Name"]
 
 # Merge the Android and iOS DataFrames based on fuzzy matching of app names (using inner join)
-combinedData = pd.merge(dataAndroid, dataIosTemp, on="App Name", how="inner")
+combinedData = pd.merge(dataIos, dataAndroidTemp, on="App Name", how="inner")
 
 # Drop unnecessary columns
 combinedData = combinedData.drop(
@@ -168,8 +197,12 @@ combinedData = combinedData.rename(
 # Calculate the average of iOS and Android app ratings (same as before)
 combinedData['Overall App Rating'] = pd.to_numeric(combinedData['iOS App Rating'], errors='coerce').add(pd.to_numeric(combinedData['Android App Rating'], errors='coerce')) / 2
 
-# Display the combined DataFrame (currently commented out)
-# print(combinedData)
+# Convert the 'Android Total Reviews' and 'iOS Total Reviews' columns to numeric (integer) data type
+combinedData['Android Total Reviews'] = pd.to_numeric(combinedData['Android Total Reviews'], errors='coerce').fillna(0).astype(int)
+combinedData['iOS Total Reviews'] = pd.to_numeric(combinedData['iOS Total Reviews'], errors='coerce').fillna(0).astype(int)
+
+# Now, you can perform the addition safely
+combinedData['Combined Total Reviews'] = combinedData['Android Total Reviews'] + combinedData['iOS Total Reviews']
 
 # Export the combined DataFrame to a CSV file
 combinedData.to_csv("data.csv", index=False)
