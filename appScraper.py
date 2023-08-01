@@ -140,10 +140,8 @@ dataIos = pd.DataFrame(data)
 dataIosTemp = dataIos.copy()
 dataIosTemp["App Name"] = dataAndroid["App Name"]
 
-# Merge the Android and iOS DataFrames based on fuzzy matching of app names
-combinedData = pd.merge(
-    dataAndroid, dataIosTemp, left_on="App Name", right_on="App Name", how="outer"
-)
+# Merge the Android and iOS DataFrames based on fuzzy matching of app names (using inner join)
+combinedData = pd.merge(dataAndroid, dataIosTemp, on="App Name", how="inner")
 
 # Drop unnecessary columns
 combinedData = combinedData.drop(
@@ -167,10 +165,10 @@ combinedData = combinedData.rename(
     columns={"Timestamp_y": "Timestamp", "Date_x": "Date"}
 )
 
-# Calculate the average of iOS and Android app ratings
+# Calculate the average of iOS and Android app ratings (same as before)
 combinedData['Overall App Rating'] = pd.to_numeric(combinedData['iOS App Rating'], errors='coerce').add(pd.to_numeric(combinedData['Android App Rating'], errors='coerce')) / 2
 
-# Display the combined DataFrame
+# Display the combined DataFrame (currently commented out)
 # print(combinedData)
 
 # Export the combined DataFrame to a CSV file
