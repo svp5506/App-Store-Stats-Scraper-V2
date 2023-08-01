@@ -158,7 +158,6 @@ combinedData = combinedData.drop(
         "5 Star Reviews (Phone)",
         "Android App Category",
         "iOS App Category",
-        "iOS App Rank",
     ],
     axis=1,
 )
