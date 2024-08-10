@@ -30,7 +30,7 @@ for url in androidURLs:
         aggregateRating = dataJSON.get("aggregateRating")
         if aggregateRating is not None:
             starRatingDetail = aggregateRating.get("ratingValue")
-            starRatingOfficial = round(float(aggregateRating.get("ratingValue")), 1)
+            starRatingOfficial = float(aggregateRating.get("ratingValue"))
         else:
             starRatingDetail = "Not Available"
             starRatingOfficial = "Not Available"
