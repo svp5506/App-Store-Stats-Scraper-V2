@@ -31,10 +31,10 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.tmobile.pr.mytmobile&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/t-mobile/id561625752"
     },
-    "Xfinity Mobile": {
-        "android": "https://play.google.com/store/apps/details?id=com.xfinitymobile.myaccount&hl=en_US&gl=US",
-        "ios": "https://apps.apple.com/us/app/xfinity-mobile/id1194745615"
-    },
+    # "Xfinity Mobile": {
+    #     "android": "https://play.google.com/store/apps/details?id=com.xfinitymobile.myaccount&hl=en_US&gl=US",
+    #     "ios": "https://apps.apple.com/us/app/xfinity-mobile/id1194745615"
+    # },
     "Spectrum News": {
         "android": "https://play.google.com/store/apps/details?id=com.twcable.twcnews&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/spectrum-news-local-stories/id740948885"
@@ -43,14 +43,14 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.brighthouse.mybhn&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-spectrum/id942608209"
     },
-    "My Sprint Mobile": {
-        "android": "https://play.google.com/store/apps/details?id=com.sprint.care&hl=en_US&gl=US",
-        "ios": "https://apps.apple.com/us/app/my-sprint-mobile/id491126018"
-    },
-    "Verizon MyFios": {
-        "android": "https://play.google.com/store/apps/details?id=com.verizon.myfios&hl=en_US&gl=US",
-        "ios": "https://apps.apple.com/us/app/verizon-my-fios/id476394945"
-    },
+    # "My Sprint Mobile": {
+    #     "android": "https://play.google.com/store/apps/details?id=com.sprint.care&hl=en_US&gl=US",
+    #     "ios": "https://apps.apple.com/us/app/my-sprint-mobile/id491126018"
+    # },
+    # "Verizon MyFios": {
+    #     "android": "https://play.google.com/store/apps/details?id=com.verizon.myfios&hl=en_US&gl=US",
+    #     "ios": "https://apps.apple.com/us/app/verizon-my-fios/id476394945"
+    # },
     "MyCenturyLink": {
         "android": "https://play.google.com/store/apps/details?id=com.centurylink.ctl_droid_wrap&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/my-centurylink/id1015059570"
@@ -150,5 +150,9 @@ appURLs = {
     "Mint Mobile": {
         "android": "https://play.google.com/store/apps/details?id=com.uvnv.mintsim&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/mint-mobile/id1295303441"
+    },
+    "T-Life": {
+        "android": "https://play.google.com/store/apps/details?id=com.tmobile.tuesdays&hl=en_US&pli=1",
+        "ios": "https://apps.apple.com/us/app/t-life/id1111876388"
     },
 }
