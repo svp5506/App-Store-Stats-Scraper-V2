@@ -30,7 +30,7 @@ for url in androidURLs:
         aggregateRating = dataJSON.get("aggregateRating")
         if aggregateRating is not None:
             starRatingDetail = aggregateRating.get("ratingValue")
-            starRatingOfficial = round(float(aggregateRating.get("ratingValue")), 1)
+            starRatingOfficial = float(aggregateRating.get("ratingValue"))
         else:
             starRatingDetail = "Not Available"
             starRatingOfficial = "Not Available"
@@ -195,7 +195,7 @@ combinedData = combinedData.rename(
 )
 
 # Calculate the average of iOS and Android app ratings (same as before)
-combinedData['Overall App Rating'] = round(pd.to_numeric(combinedData['iOS App Rating'], errors='coerce').add(pd.to_numeric(combinedData['Android App Rating'], errors='coerce')) / 2, 1)
+combinedData['Overall App Rating'] = pd.to_numeric(combinedData['iOS App Rating'], errors='coerce').add(pd.to_numeric(combinedData['Android App Rating'], errors='coerce')) / 2
 
 # Convert the 'Android Total Reviews' and 'iOS Total Reviews' columns to numeric (integer) data type
 combinedData['Android Total Reviews'] = pd.to_numeric(combinedData['Android Total Reviews'], errors='coerce').fillna(0).astype(int)
@@ -205,4 +205,4 @@ combinedData['iOS Total Reviews'] = pd.to_numeric(combinedData['iOS Total Review
 combinedData['Combined Total Reviews'] = combinedData['Android Total Reviews'] + combinedData['iOS Total Reviews']
 
 # Export the combined DataFrame to a CSV file
-combinedData.to_csv("data.csv", index=False)
+combinedData.to_csv("dataDetailed.csv", index=False)

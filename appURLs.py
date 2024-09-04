@@ -111,10 +111,6 @@ appURLs = {
         "android": "https://play.google.com/store/apps/details?id=com.hughesnet.HughesNetMobile&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/hughesnet-mobile/id1097579916"
     },
-    "HT MyAccount": {
-        "android": "https://play.google.com/store/apps/details?id=com.hawaiiantel.myht&hl=en_US&gl=US",
-        "ios": "https://apps.apple.com/us/app/ht-my-account/id1262963153"
-    },
     "Midco MyAccount": {
         "android": "https://play.google.com/store/apps/details?id=com.midco.consumerapp&hl=en_US&gl=US",
         "ios": "https://apps.apple.com/us/app/midco-my-account/id1090421908"
