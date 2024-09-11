@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import pytz
 import requests
 import json
 from datetime import datetime
@@ -6,7 +7,8 @@ import pandas as pd
 from appURLs import appURLs
 
 # Timestamp and Date
-timestamp = datetime.now()
+mountain = pytz.timezone('US/Mountain')
+timestamp = datetime.now(mountain)
 dateFormatted = "{:%Y-%m-%d}".format(timestamp)
 
 # Scrape Android Data
